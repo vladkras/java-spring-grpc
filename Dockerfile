@@ -1,4 +1,4 @@
-FROM openjdk:alpine
+FROM openjdk:11
 
 COPY . /app
 
