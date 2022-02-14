@@ -2,7 +2,10 @@ FROM openjdk:11
 
 COPY . /app
 
-RUN apt update && apt install maven protobuf-compiler
+RUN apt-get update && apt-get install -y \
+    maven \
+    protobuf-compiler \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
