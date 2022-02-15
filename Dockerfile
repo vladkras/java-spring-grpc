@@ -1,11 +1,8 @@
-FROM openjdk:11
+FROM openjdk:17-alpine
 
 COPY . /app
 
-RUN apt-get update && apt-get install -y \
-    maven \
-    protobuf-compiler \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --update maven protobuf-dev gcompat
 
 WORKDIR /app
 
