@@ -7,7 +7,6 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-
 @SpringBootApplication
 public class DemoApplication {
 
@@ -18,6 +17,12 @@ public class DemoApplication {
 		System.out.println("Starting server on port 8080");
 		server.start();
 		System.out.println("Server started on port 8080");
+
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("server is shutting down!");
+            server.shutdown();
+        }));
+
 		server.awaitTermination();
 	}
 
